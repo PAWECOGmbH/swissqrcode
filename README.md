@@ -1,5 +1,7 @@
 # Swiss QR Bill Generator
 
+![swiss-qr-bill](https://github.com/PAWECOGmbH/swissqrcode/assets/22148114/90cd0895-799f-4bfb-bb01-dd4e692d32f2)
+
 This repository contains a ColdFusion (Lucee) application specifically designed for generating Swiss QR bills, which are used for streamlined payment processing in Switzerland. The project allows for the generation of QR codes that comply with Swiss payment standards, with the capability to integrate these QR codes directly into payment forms or output them as standalone images or binary data. Additionally, the application can generate a complete PDF page that includes the QR payment slip.
 
 ## Features
