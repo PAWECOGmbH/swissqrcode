@@ -37,12 +37,14 @@ qrDataSet['qrLogo'] = "ch-cross.png";
 // Call the function in order to generate the qr code or/and the bill
 /*
 output:
-- "img" for a png image with qr code with the specifies size (ganz oben)
-- "pdf" for an A4 pdf with payment slip at the bottom
-- "binary" for the qr image as binary base64 data
+- "img" for a png image with qr code with the specified size (see above)
+- "pdf" for an A4 pdf with payment slip at the bottom (cfdocument)
+- "binary" for the qr image as binary code (base64)
+- "variable" for the cfdocument variable (is used to merge with another pdf)
 */
 myQRInvoice = new swissqrbill().generateSwissBill(qrDataSet, "img");
 
 writeOutput(myQRInvoice);
+
 
 </cfscript>

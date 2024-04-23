@@ -45,7 +45,13 @@ component displayname="swissqrbill" output="false" {
         // Generate pdf
         } else if (arguments.output eq "pdf") {
 
-            return buildHTML();
+            return createPDF("pdf");
+
+
+        // Generate pdf using a variable
+        } else if (arguments.output eq "variable") {
+
+            return createPDF("variable");
 
         }
 
@@ -122,7 +128,7 @@ component displayname="swissqrbill" output="false" {
 
     }
 
-    private void function buildHTML() {
+    private string function buildHTML() {
 
         local.html = "
 
@@ -328,19 +334,31 @@ component displayname="swissqrbill" output="false" {
             </body>
         </html>";
 
-        return createPDF(local.html);
+        return local.html;
 
     }
 
-    public void function createPDF(required string htmlContent) {
+    public any function createPDF(string pdfType) {
 
-        // Prepares the browser to receive a PDF
-        cfcontent(type="application/pdf", reset="true");
-
-        // Writes the HTML content to the PDF
-        cfdocument(format="pdf", unit="pt", pageType="A4", marginLeft="0", marginRight="0", marginTop="540", marginBottom="0", type="classic") {
-            writeOutput(arguments.htmlContent);
+        // Create and open the PDF directly in the browser
+        if (arguments.pdfType eq "pdf") {
+            cfdocument(format="pdf", unit="pt", pageType="A4", marginLeft="0", marginRight="0", marginTop="540", marginBottom="0", type="classic") {
+                writeOutput(buildHTML());
+            }
+            return;
         }
+
+        // Create the PDF and save it into the memory
+        if (arguments.pdfType eq "variable") {
+            cfdocument(name="local.qrslip" format="pdf", unit="pt", pageType="A4", marginLeft="0", marginRight="0", marginTop="540", marginBottom="0", type="classic") {
+                writeOutput(buildHTML());
+            }
+            return local.qrslip;
+        }
+
+
+        return "";
+
 
     }
 
@@ -593,10 +611,10 @@ component displayname="swissqrbill" output="false" {
         local.ref = 0;
 
         // Iterate through each digit of the reference number to calculate the checksum
-        loop from=1 to=local.refLength index="i" {
+        loop from=1 to=local.refLength index="local.i" {
 
             // Add the current value of ref and the current digit of the reference number
-            local.rpr = local.ref + local.ro[i];
+            local.rpr = local.ref + local.ro[local.i];
 
             // Update ref based on the algorithm
             // The index in the alg array is calculated based on the remainder of the division
