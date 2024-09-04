@@ -16,10 +16,10 @@ This repository contains a ColdFusion (Lucee) application specifically designed 
 
 To run this project, you will need:
 
-- A Server running Linus or Windows.
+- A Server running Linux or Windows.
 - Lucee 5 or newer.
 - Two JAVA files from ZXing library for QR code generation.
-  
+
 
 ## Installation
 
