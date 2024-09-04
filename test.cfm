@@ -3,7 +3,7 @@
 qrDataSet = {};
 
 // IBAN number (21 digits)
-qrDataSet['billerIBAN'] = "CH7930000001500638219";
+qrDataSet['billerIBAN'] = "CH5604835012345678009";
 
 //** Rferencenumbers in different variations (delete leading slashes for tests)
 qrDataSet['billerQrReference'] = ""; // Without QR reference number
