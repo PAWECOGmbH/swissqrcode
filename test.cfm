@@ -6,7 +6,8 @@ qrDataSet = {};
 qrDataSet['billerIBAN'] = "CH5604835012345678009";
 
 //** Rferencenumbers in different variations (delete leading slashes for tests)
-qrDataSet['billerQrReference'] = "21 00000 00003 13947 14300 0901"; // QR reference number (26 numbers)
+qrDataSet['billerQrReference'] = ""; // Without QR reference number
+//qrDataSet['billerQrReference'] = "21 00000 00003 13947 14300 0901"; // QR reference number (26 numbers)
 //qrDataSet['billerQrReference'] = "11 09908 27000 00000 00000 60782"; // Including the checksum already (27 numbers)
 //qrDataSet['billerQrReference'] = "11 09908 27"; // Short reference number/id
 //qrDataSet['billerQrReference'] = "RF48 5000 0567 8901"; // SCOR code (with leading RF)
@@ -42,7 +43,7 @@ output:
 - "binary" for the qr image as binary code (base64)
 - "variable" for the cfdocument variable (is used to merge with another pdf)
 */
-myQRInvoice = new swissqrbill().generateSwissBill(qrDataSet, "img");
+myQRInvoice = new swissqrbill().generateSwissBill(qrDataSet, "pdf");
 
 writeOutput(myQRInvoice);
 
