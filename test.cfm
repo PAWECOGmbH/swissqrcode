@@ -3,7 +3,7 @@
 qrDataSet = {};
 
 // IBAN number (21 digits)
-qrDataSet['billerIBAN'] = "CH5604835012345678009";
+qrDataSet['billerIBAN'] = "CH3109000000500638219"; // IBAN number
 
 //** Rferencenumbers in different variations (delete leading slashes for tests)
 qrDataSet['billerQrReference'] = ""; // Without QR reference number
@@ -14,18 +14,22 @@ qrDataSet['billerQrReference'] = ""; // Without QR reference number
 
 //* Billers data
 qrDataSet['billerName'] = "PAWECO GmbH"; // Company or Pre- and Lastname
-qrDataSet['billerStreetAndNumber'] = "Bösch 63"; // Street and number
-qrDataSet['billerZipAndCity'] = "6331 Hünenberg"; // ZIP and City
+qrDataSet['billerStreet'] = "Haldenrain"; // Street
+qrDataSet['billerStreetNumber'] = "20"; // Street number
+qrDataSet['billerZip'] = "6305"; // ZIP
+qrDataSet['billerCity'] = "Eich"; // City
 qrDataSet['billerCountryIso'] = "CH"; // Country in ISO format (2 digits)
 
 //* Deptors data
 qrDataSet['debtorName'] = "Muster AG"; // Company or Pre- and Lastname
-qrDataSet['debtorStreetAndNumber'] = "Musterstrasse 99"; // Street and number
-qrDataSet['debtorZipAndCity'] = "9999 St. Gallen"; // ZIP and City
+qrDataSet['debtorStreet'] = "Musterstrasse"; // Street
+qrDataSet['debtorStreetNumber'] = "99"; // Street number
+qrDataSet['debtorZip'] = "9999"; // ZIP
+qrDataSet['debtorCity'] = "St. Gallen"; // City
 qrDataSet['debtorCountryIso'] = "CH"; // Country in ISO format (2 digits)
 
 //* Invoice data
-qrDataSet['invoiceAmount'] = "20457"; // Amount (xxx.xx)
+qrDataSet['invoiceAmount'] = "60.00"; // Amount (xxx.xx)
 qrDataSet['invoiceCurrency'] = "CHF"; // Currency (only CHF or EUR possible)
 qrDataSet['invoiceAddText'] = "Invoice for order nr. 123456"; // Additional info text
 
@@ -43,7 +47,7 @@ output:
 - "binary" for the qr image as binary code (base64)
 - "variable" for the cfdocument variable (is used to merge with another pdf)
 */
-myQRInvoice = new swissqrbill().generateSwissBill(qrDataSet, "pdf");
+myQRInvoice = new swissqrbill().generateSwissBill(qrDataSet, "img");
 
 writeOutput(myQRInvoice);
 
